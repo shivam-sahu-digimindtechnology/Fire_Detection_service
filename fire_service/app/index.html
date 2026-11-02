@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align:center">FastAPI WebSocket Demo </h1>
+
+    
+        <table border="1"  id="detectionTable">
+            <thead>
+            <tr>
+            
+            <th>S No.</th>
+            <th>Class Name</th>
+            <th>Confidence Score</th>
+            <th>X1</th>
+            <th>Y1</th>
+            <th>X2</th>
+            <th>Y2</th>
+        </tr>
+        </thead>
+        <tbody id="tableBody">
+            
+        </tbody>
+
+
+        </table>
+    
+
+
+
+    <script>
+        
+        const tbody=document.getElementById("tableBody")
+
+    //    const port=window.location
+    //    console.log(port);
+       tbody.innerHTML="";
+       let index=0;
+        const connection= new WebSocket(`ws://127.0.0.1:8000/ws`)
+        connection.onopen =()=>{
+            console.log("connected")
+            connection.send("hello FastAPI")
+        }
+        connection.onmessage =(mess)=>{
+            console.log("message",mess.data);
+           
+            mess.array.forEach((detection) => {
+                tbody.innerHTML += `
+                <tr>
+        <td>${index + 1}</td>
+        <td>${detection.class}</td>
+        <td>${detection.confidence}</td>
+        <td>${detection.bbox.x1}</td>
+        <td>${detection.bbox.y1}</td>
+        <td>${detection.bbox.x2}</td>
+        <td>${detection.bbox.y2}</td>
+    </tr>
+                `
+            });
+            
+        }
+        connection.onclose=()=>
+        {
+            console.log("Connection closed");
+            
+    }
+        connection.onerror = (err) => {
+    console.log(err);
+};
+    </script>
+</body>
+</html>

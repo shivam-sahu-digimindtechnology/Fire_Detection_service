@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['fire', 'fire-smoke', 'smoke']
+
+roboflow:
+  workspace: fire-and-smoke-datasheet-qumum
+  project: fire-and-smoke-lwvsp
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/fire-and-smoke-datasheet-qumum/fire-and-smoke-lwvsp/dataset/1

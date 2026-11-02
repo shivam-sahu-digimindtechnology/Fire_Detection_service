@@ -1,0 +1,20 @@
+{
+  "id": 100,
+  "camera_id": "CAM_DEFAULT",
+  "camera_name": "Building North Wing",
+  "timestamp": "2026-09-22T06:57:44Z",
+  "class": "fire",
+  "confidence": 0.5568,
+  "severity": "MEDIUM",
+  "bbox": {
+    "x1": 266,
+    "y1": 331,
+    "x2": 306,
+    "y2": 419
+  },
+  "fire_area": 3520,
+  "snapshot_url": "https://None.s3.amazonaws.com/company_doc/fire_detection_data/22-09-2026/images/fire_100_20260922T065744Z.jpg",
+  "clip_url": "https://None.s3.amazonaws.com/company_doc/fire_detection_data/22-09-2026/images/clip_100_20260922T065744Z.mp4",
+  "alarm_sent": true,
+  "status": "ACTIVE"
+}
